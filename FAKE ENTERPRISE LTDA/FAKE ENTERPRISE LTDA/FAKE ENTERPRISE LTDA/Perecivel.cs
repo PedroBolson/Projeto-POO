@@ -18,24 +18,21 @@ namespace FAKE_ENTERPRISE_LTDA
             this.DataValidade = dataValidade;
             this.Organico = organico;
             this.Ingredientes = ingredientes;
-            this.data = new Data();
         }
         public int DiasAteVencimento(Data dataRef)
         {
-            int data1 = 0;
-            int data2 = 0;
-            data1 = data.DiasTotais(dataRef);
-            data2 = data.DiasTotais(this.DataValidade);
+            var data1 = data.DiasTotais(dataRef);
+            var data2 = data.DiasTotais(this.DataValidade);
 
             if (data1 > data2)
             {
-                Console.Write($"Cuidado! No dia {dataRef} o produto estará vencido há");
+                Console.WriteLine($"Cuidado! No dia {dataRef} o produto estará vencido há");
                 var data3 = data1 - data2;
                 return data3;
             }
             else
             {
-                Console.Write($"A validade do produto no dia {dataRef} terá mais");
+                Console.WriteLine($"A validade do produto até {dataRef} tem mais");
                 var data3 = data2 - data1;
                 return data3;
             }
@@ -43,7 +40,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public override void ExibirDetalhes()
         {
-            Console.WriteLine($"Código: {Codigo}, Descrição: {Descricao}, Fabricante: {Fabricante}, Data de Validade: {DataValidade.ToString()}, Organico: {(Organico ? "Sim" : "Não")}, Ingredientes: {Ingredientes}");
+            Console.WriteLine($"Produto Perecível - Código: {Codigo}, Descrição: {Descricao}, Fabricante: {Fabricante}, Data de Validade: {DataValidade.ToString()}, Organico: {(Organico ? "Sim" : "Não")}, Ingredientes: {Ingredientes}");
         }
     }
 }

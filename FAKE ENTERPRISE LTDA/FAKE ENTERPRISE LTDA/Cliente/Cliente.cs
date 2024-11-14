@@ -24,6 +24,5 @@ namespace FAKE_ENTERPRISE_LTDA
             this.FoneCelular = foneCelular;
             this.Nascimento = nascimento;
         }
-
     }
 }

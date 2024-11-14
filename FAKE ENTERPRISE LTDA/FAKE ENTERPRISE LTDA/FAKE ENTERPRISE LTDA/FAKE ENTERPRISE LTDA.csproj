@@ -43,28 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntradaDados.cs" />
-    <Compile Include="Venda\CadVendas.cs" />
-    <Compile Include="Cliente\CadClientes.cs" />
-    <Compile Include="Cliente\Cliente.cs" />
-    <Compile Include="Cliente\Endereco.cs" />
-    <Compile Include="Estoque\Estoque.cs" />
-    <Compile Include="Estoque\ItemEstoque.cs" />
-    <Compile Include="Venda\Venda.cs" />
-    <Compile Include="Venda\ItemVenda.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="Produto\CadProdutos.cs" />
+    <Compile Include="CadProdutos.cs" />
     <Compile Include="Data.cs" />
-    <Compile Include="Produto\Digital.cs" />
-    <Compile Include="Produto\Duravel.cs" />
-    <Compile Include="Produto\Perecivel.cs" />
-    <Compile Include="Produto\Produto.cs" />
+    <Compile Include="Digital.cs" />
+    <Compile Include="Duravel.cs" />
+    <Compile Include="Perecivel.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

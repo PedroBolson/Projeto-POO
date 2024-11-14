@@ -21,7 +21,7 @@ namespace FAKE_ENTERPRISE_LTDA
         }
         public override void ExibirDetalhes()
         {
-            Console.WriteLine($"Código: {Codigo}, Descrição: {Descricao}, Fabricante: {Fabricante}, Garantia: {Garantia} Meses, Material: {Material}, Manutenção: {(Manutencao ? "Sim" : "Não")}");
+            Console.WriteLine($"Produto Durável - Código: {Codigo}, Descrição: {Descricao}, Fabricante: {Fabricante}, Garantia: {Garantia}, Material: {Material}, Manutenção: {(Manutencao ? "Sim" : "Não")}");
         }
     }
 }

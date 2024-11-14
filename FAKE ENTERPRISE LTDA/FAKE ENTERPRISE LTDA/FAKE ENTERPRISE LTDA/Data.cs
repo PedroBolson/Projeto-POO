@@ -12,14 +12,19 @@ namespace FAKE_ENTERPRISE_LTDA
         public int Mes { get; set; }
         public int Ano { get; set; }
 
-        public Data()
-        {
-        }
         public Data(int dia, int mes, int ano)
         {
+            var valida = Valida(dia, mes, ano);
+            if (valida == false)
+            {
+                Console.WriteLine("Data inválida!");
+            }
+            else
+            {
                 this.Dia = dia;
                 this.Mes = mes;
                 this.Ano = ano;
+            }
         }
 
         private bool AnoBissexto(int ano)

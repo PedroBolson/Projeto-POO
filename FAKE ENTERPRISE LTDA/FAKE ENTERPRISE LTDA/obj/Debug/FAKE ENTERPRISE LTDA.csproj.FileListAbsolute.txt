@@ -12,3 +12,10 @@ D:\Estudo\FSG\2024\Programação Orientada a Objetos\Trabalho de Implementação
 D:\Estudo\FSG\2024\Programação Orientada a Objetos\Trabalho de Implementação 2\Projeto-POO-2-main\Projeto-POO-2-main\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.csproj.CoreCompileInputs.cache
 D:\Estudo\FSG\2024\Programação Orientada a Objetos\Trabalho de Implementação 2\Projeto-POO-2-main\Projeto-POO-2-main\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.exe
 D:\Estudo\FSG\2024\Programação Orientada a Objetos\Trabalho de Implementação 2\Projeto-POO-2-main\Projeto-POO-2-main\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.pdb
+E:\Projetos VisualStudio\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\bin\Debug\FAKE ENTERPRISE LTDA.exe.config
+E:\Projetos VisualStudio\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\bin\Debug\FAKE ENTERPRISE LTDA.exe
+E:\Projetos VisualStudio\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\bin\Debug\FAKE ENTERPRISE LTDA.pdb
+E:\Projetos VisualStudio\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.csproj.AssemblyReference.cache
+E:\Projetos VisualStudio\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.csproj.CoreCompileInputs.cache
+E:\Projetos VisualStudio\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.exe
+E:\Projetos VisualStudio\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.pdb

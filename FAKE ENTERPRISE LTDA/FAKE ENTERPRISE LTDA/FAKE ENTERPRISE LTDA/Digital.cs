@@ -23,7 +23,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public override void ExibirDetalhes()
         {
-            Console.WriteLine($"Código: {Codigo}, Descrição: {Descricao}, Fabricante: {Fabricante}, Tamanho: {Tamanho}, Formato: {Formato}, Link: {Link}");
+            Console.WriteLine($"Produto Digital - Código: {Codigo}, Descrição: {Descricao}, Fabricante: {Fabricante}, Tamanho: {Tamanho}, Formato: {Formato}, Link: {Link}");
         }
     }
 }

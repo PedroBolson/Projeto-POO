@@ -26,5 +26,10 @@ namespace FAKE_ENTERPRISE_LTDA
             this.Cidade = cidade;
             this.Uf = uf;
         }
+        public override string ToString()
+        {
+            return $"Rua: {Rua}, {Numero}, Complemento: {Complemento}, Bairro: {Bairro}, CEP: {Cep}, Cidade:{Cidade}, UF:{Uf}";
+        }
+
     }
 }
