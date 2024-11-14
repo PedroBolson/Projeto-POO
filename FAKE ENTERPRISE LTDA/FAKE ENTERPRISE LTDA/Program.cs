@@ -18,7 +18,7 @@ namespace FAKE_ENTERPRISE_LTDA
             var data3 = new Data(20, 3, 2025);
             var data1 = new Data(31, 2, 2040);
             var produto1 = new Duravel(1, "Telefone", "Samsung", 2030, "Titânio", false);
-            var produto2 = new Digital(2, "Cartão presente", "Netflix", 0, "Código de resgate digital", "www.amazon.com.br/cupom_Netflix");
+            var produto2 = new Digital(2, "Cartão presente", "Netflix", 0, "Código de resgate digital", "amazon.com.br/cupom_Netflix");
             var produto3 = new Perecivel(3, "Leite", "CCGL", data3, true, "Leite e derivados");
             cadProdutos.Insere(produto1);
             cadProdutos.Insere(produto2);
