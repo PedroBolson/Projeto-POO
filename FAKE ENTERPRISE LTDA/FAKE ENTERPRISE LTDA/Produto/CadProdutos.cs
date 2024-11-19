@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace FAKE_ENTERPRISE_LTDA
     public class CadProdutos
     {
         EntradaDados entradaDados = new EntradaDados();
-        private List<Produto> produtos = new List<Produto>();
+        protected List<Produto> produtos = new List<Produto>();
 
         public bool ConfereCodigo(int codigo)
         {
@@ -23,13 +24,16 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public Produto BuscaProduto(int codigo)
         {
-            foreach(Produto produto in produtos)
+            foreach (Produto produto in produtos)
             {
-                if(produto.Codigo == codigo)
+                if (produto.Codigo == codigo)
+                {
                     return produto;
+                }
             }
             return null;
         }
+
 
         public void Insere(Produto prod)
         {
@@ -42,6 +46,11 @@ namespace FAKE_ENTERPRISE_LTDA
         public int GetTamanho()
         {
             return produtos.Count;
+        }
+
+        public void PrintaProduto(Produto produto)
+        {
+                produto.ExibirDetalhes();
         }
         public void PrintaProduto(int referencia)
         {

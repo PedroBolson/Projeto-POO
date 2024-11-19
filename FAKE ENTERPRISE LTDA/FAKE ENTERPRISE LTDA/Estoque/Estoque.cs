@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,31 +19,57 @@ namespace FAKE_ENTERPRISE_LTDA
             itens.Add(item);
         }
 
+        public double RetornaValorUnitario(int codigo)
+        {
+            foreach(ItemEstoque item in itens)
+            {
+                if(item.Item.Codigo == codigo)
+                {
+                    return item.Valor;
+                }
+            }
+            return 0.0;
+        }
+
+        public bool VerificaEstoque(int codigo)
+        {
+            foreach(ItemEstoque item in itens)
+            {
+                if (item.Item.Codigo == codigo)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool VerificaEstoque(int codigo, int quantidade)
+        {
+            foreach (ItemEstoque item in itens)
+            {
+                if (item.Item.Codigo == codigo && item.Quantidade >= quantidade)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void AtualizaEstoque(int codigo, int quantidade)
+        {
+            foreach(ItemEstoque item in itens)
+            {
+                if(item.Item.Codigo == codigo)
+                {
+                    item.Quantidade -= quantidade;
+                    break;
+                }
+            }
+        }
+
         public ItemEstoque GetItem(int posicao)
         {
             return itens[posicao];
-        }
-
-        public void CadastroEstoque()
-        {
-            int codigo;
-            do
-            {
-                codigo = entradaDados.LeInteiro("Digite o(s) códigos para adicionar no estoque ou digite 0 para SAIR");
-                var produto = cadProdutos.BuscaProduto(codigo);
-                if (produto == null && codigo != 0)
-                {
-                    Console.WriteLine("Produto não encontrado! Por favor tente novamente");
-                }
-                else
-                {
-                    var quantidade = entradaDados.LeInteiro("Digite a quantidade de produtos");
-                    var valor = entradaDados.LeFloat("Digite o preço unitário do produto");
-                    var item = new ItemEstoque(produto, quantidade, valor);
-                    this.Insere(item);
-                    Console.WriteLine("Produto cadastrado com sucesso!");
-                }
-            } while (codigo != 0);
         }
     }
 }

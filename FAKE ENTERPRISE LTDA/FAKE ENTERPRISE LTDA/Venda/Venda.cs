@@ -13,17 +13,12 @@ namespace FAKE_ENTERPRISE_LTDA
         public Cliente Cliente { get; set; }
         public double ValorTotal { get; set; }
         public Data DataVenda { get; set; }
-        public Venda(Cliente cliente, Data dataVenda)
+        public Venda(Cliente cliente, Data dataVenda, double total)
         {
             Itens = new List<ItemVenda>();
             this.Cliente = cliente;
-            this.ValorTotal = 0.0;
+            this.ValorTotal = total;
             this.DataVenda = dataVenda;
-        }
-        private void InsereItem(ItemVenda itemVenda) 
-        {
-            Itens.Add(itemVenda);
-            ValorTotal += itemVenda.Valor;
         }
     }
 }

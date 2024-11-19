@@ -16,6 +16,18 @@ namespace FAKE_ENTERPRISE_LTDA
             clientes.Add(cliente);
         }
 
+        public Cliente BuscaCliente(int codigo)
+        {
+            foreach(Cliente cliente in clientes)
+            {
+                if(cliente.Codigo == codigo)
+                {
+                    return cliente;
+                }
+            }
+            return null;
+        }
+
         public Cliente GetCliente(int posicao)
         {
             return clientes[posicao];
