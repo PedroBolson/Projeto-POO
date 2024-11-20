@@ -9,16 +9,32 @@ namespace FAKE_ENTERPRISE_LTDA
 {
     public class Venda
     {
-        public List<ItemVenda> Itens { get; set; }
+        public List<ItemVenda> Itens { get; set; } = new List<ItemVenda>();
         public Cliente Cliente { get; set; }
         public double ValorTotal { get; set; }
         public Data DataVenda { get; set; }
-        public Venda(Cliente cliente, Data dataVenda, double total)
+        public Venda(List<ItemVenda> itens, Cliente cliente, Data dataVenda, double total)
         {
-            Itens = new List<ItemVenda>();
+            Itens = itens;
             this.Cliente = cliente;
             this.ValorTotal = total;
             this.DataVenda = dataVenda;
+        }
+
+        public override string ToString() 
+        {
+
+            Console.WriteLine($"Cliente: {Cliente.Nome} (Código: {Cliente.Codigo})");
+            Console.WriteLine($"Data da Venda: {DataVenda}");
+            Console.WriteLine($"Valor Total: R$ {ValorTotal:F2}");
+            Console.WriteLine("Itens Vendidos:");
+            foreach (ItemVenda item in Itens)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            Console.WriteLine(new string('-', 30));
+            return "Venda listada com sucesso!";
         }
     }
 }

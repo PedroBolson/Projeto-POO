@@ -67,6 +67,26 @@ namespace FAKE_ENTERPRISE_LTDA
             }
         }
 
+        public Produto GetItemPorCodigo(int codigo)
+        {
+            foreach(ItemEstoque item in itens)
+            {
+                if(item.Item.Codigo == codigo)
+                {
+                    return item.Item;
+                }
+            }
+            return null;
+        }
+
+        public void EscreveEstoque()
+        {
+            foreach (ItemEstoque item in itens)
+            {
+                Console.WriteLine($"Código: {item.Item.Codigo} Produto: {item.Item.Descricao} Quantidade: {item.Quantidade}");
+            }
+        }
+
         public ItemEstoque GetItem(int posicao)
         {
             return itens[posicao];

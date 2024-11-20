@@ -36,20 +36,7 @@ namespace FAKE_ENTERPRISE_LTDA
             Console.WriteLine("Lista de Vendas:");
             foreach (Venda venda in vendas)
             {
-                Console.WriteLine($"Cliente: {venda.Cliente.Nome} (Código: {venda.Cliente.Codigo})");
-                Console.WriteLine($"Data da Venda: {venda.DataVenda}");
-                Console.WriteLine($"Valor Total: R$ {venda.ValorTotal:F2}");
-                Console.WriteLine("Itens Vendidos:");
-
-                foreach (ItemVenda item in venda.Itens)
-                {
-                    Console.WriteLine($"- Produto: {item.Item.Descricao} (Código: {item.Item.Codigo})");
-                    Console.WriteLine($"  Quantidade: {item.Quantidade}");
-                    Console.WriteLine($"  Valor Unitário: R$ {item.Valor:F2}");
-                    Console.WriteLine($"  Valor Total: R$ {item.Valor * item.Quantidade:F2}");
-                }
-
-                Console.WriteLine(new string('-', 30)); // Separador entre vendas
+                venda.ToString();
             }
         }
     }

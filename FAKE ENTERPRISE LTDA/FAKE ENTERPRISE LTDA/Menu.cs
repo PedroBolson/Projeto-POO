@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace FAKE_ENTERPRISE_LTDA
         CadProdutos cadProdutos;
         CadClientes cadClientes;
         Estoque estoque;
-
+        double total;
         private void EscreveMenu()
         {
             Console.WriteLine("Por favor, escolha uma opção:");
@@ -63,24 +64,10 @@ namespace FAKE_ENTERPRISE_LTDA
                         cadProdutos.CadastroPrduto(option);
                         break;
                     case 2:
-                        Console.WriteLine("Produtos Duráveis");
-                        Console.WriteLine("");
-                        cadProdutos.PrintaProduto(1);
-                        Console.WriteLine(new string('-', 30));
-                        Console.WriteLine("Produtos Digitais");
-                        Console.WriteLine("");
-                        cadProdutos.PrintaProduto(2);
-                        Console.WriteLine(new string('-', 30));
-                        Console.WriteLine("Produtos Perecíveis");
-                        Console.WriteLine("");
-                        cadProdutos.PrintaProduto(3);
+                        this.EscreveProdutos();
                         break;
                     case 3:
-                        Console.WriteLine("Data para verificação de validade");
-                        var data1 = entradaDados.LeData();
-                        Console.WriteLine("Produtos perecíveis a vencer");
-                        Console.WriteLine();
-                        cadProdutos.ProdutosAVencer(data1);
+                        this.ConfereValidade();
                         break;
                     case 4:
                         cadClientes.CadastroCliente();
@@ -90,129 +77,13 @@ namespace FAKE_ENTERPRISE_LTDA
                         cadClientes.PrintaClientes();
                         break;
                     case 6:
-                        Console.WriteLine("Produtos Duráveis");
-                        Console.WriteLine("");
-                        cadProdutos.PrintaProduto(1);
-                        Console.WriteLine(new string('-', 30));
-                        Console.WriteLine("Produtos Digitais");
-                        Console.WriteLine("");
-                        cadProdutos.PrintaProduto(2);
-                        Console.WriteLine(new string('-', 30));
-                        Console.WriteLine("Produtos Perecíveis");
-                        Console.WriteLine("");
-                        cadProdutos.PrintaProduto(3);
-                        int codigo;
-                        do
-                        {
-                            codigo = entradaDados.LeInteiro("Digite o(s) códigos para adicionar no estoque ou digite 0 para SAIR");
-                            var produto = cadProdutos.BuscaProduto(codigo);
-                            if (produto != null)
-                            {
-                                var quantidade = entradaDados.LeInteiro("Digite a quantidade de produtos");
-                                var valor = entradaDados.LeFloat("Digite o preço unitário do produto");
-                                var item = new ItemEstoque(produto, quantidade, valor);
-                                estoque.Insere(item);
-                                Console.WriteLine("Produto cadastrado com sucesso!");
-                            }
-
-                        } while (codigo != 0);
+                        this.CadastroEstoque();
                         break;
                     case 7:
-                        Cliente cliente1;
-                        Console.WriteLine("Clientes");
-                        cadClientes.PrintaClientes();
-                        Console.WriteLine("Digite o código de um cliente cadastrado");
-                        int controle = 0;
-                        do
-                        {
-                            var codigo1 = entradaDados.LeInteiro("Código");
-                            cliente1 = cadClientes.BuscaCliente(codigo1);
-                            if (cliente1 != null)
-                            {
-                                controle = 1;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Cliente não encontrado!");
-                            }
-                        } while (controle == 0);
-                        Console.WriteLine("Checagem de estoque para os produtos, por favor digite os códigos de cada produto");
-                        int[] codigos = new int[100];
-                        int[] quantidades = new int[100];
-                        int codigo2, i = 0;
-                        do
-                        {
-
-                            Console.WriteLine("Informe o código do produto vendido, para continuar a venda digite 0");
-                            codigo2 = entradaDados.LeInteiro("Código");
-                            if (estoque.VerificaEstoque(codigo2))
-                            {
-                                Console.WriteLine("Produto encontrado no estoque!");
-                                var quantidade1 = entradaDados.LeInteiro("Digite a quantidade de itens");
-                                if (estoque.VerificaEstoque(codigo2, quantidade1))
-                                {
-                                    Console.WriteLine("Quantidade de itens disponível em estoque!");
-                                    codigos[i] = codigo2;
-                                    quantidades[i] = quantidade1;
-                                    i++;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Quantidade insuficiente em estoque");
-                                }
-                            }
-                            else if (codigo2 != 0)
-                            {
-                                Console.WriteLine("Produto não encontrado em estoque");
-                            }
-                            Console.WriteLine("Informe a data de venda");
-                        } while (codigo2 != 0);
-                        var dataVenda = entradaDados.LeData();
-                        double total = 0.0;
-                        for (int j = 0; j < i; j++)
-                        {
-                            var aux = codigos[j];
-                            var totalParcial = estoque.RetornaValorUnitario(aux);
-                            if( totalParcial != 0.0)
-                            {
-                                totalParcial = totalParcial * quantidades[j];
-                                estoque.AtualizaEstoque(codigos[j], quantidades[j]);
-                                total += totalParcial;
-                            }
-                            else 
-                            {
-                                Console.WriteLine($"Valor unitário do produto com código {codigos[j]} não encontrado!");
-                            }
-                        }
-                        var venda1 = new Venda(cliente1, dataVenda, total);
-                        cadVendas.Insere(venda1);
+                        this.CadastroVenda();
                         break;
                     case 8:
-                        if (cadVendas.GetVenda(0) == null)
-                        {
-                            Console.WriteLine("Nenhuma venda cadastrada.");
-                            return;
-                        }
-
-                        Console.WriteLine("Lista de Vendas:");
-                        for (int j = 0; j < cadVendas.GetTamanho(); j++)
-                        {
-                            var vendas = cadVendas.GetVenda(j);
-                            Console.WriteLine($"Cliente: {vendas.Cliente.Nome} (Código: {vendas.Cliente.Codigo})");
-                            Console.WriteLine($"Data da Venda: {vendas.DataVenda}");
-                            Console.WriteLine($"Valor Total: R$ {vendas.ValorTotal:F2}");
-                            Console.WriteLine("Itens Vendidos:");
-                            foreach (ItemVenda item in vendas.Itens)
-                            {
-                                Console.WriteLine($"- Produto:");
-                                item.Item.ExibirDetalhes();
-                                Console.WriteLine($"  Quantidade: {item.Quantidade}");
-                                Console.WriteLine($"  Valor Unitário: R$ {item.Valor:F2}");
-                                Console.WriteLine($"  Valor Total: R$ {item.Valor * item.Quantidade:F2}");
-                            }
-
-                            Console.WriteLine(new string('-', 30));
-                        }
+                        cadVendas.ListarVendas();
                         break;
                 }
                 Console.WriteLine("Digite qualquer tecla para continuar ...");
@@ -221,6 +92,110 @@ namespace FAKE_ENTERPRISE_LTDA
                 this.EscreveMenu();
                 opcao = entradaDados.LeInteiro("Opção: ", 1, 9);
             }
+        }
+
+        private void CadastroEstoque()
+        {
+            this.EscreveProdutos();
+            int codigo;
+            do
+            {
+                codigo = entradaDados.LeInteiro("Digite o(s) códigos para adicionar no estoque ou digite 0 para retornar ao menu principal");
+                var produto = cadProdutos.BuscaProduto(codigo);
+                if (produto != null)
+                {
+                    var quantidade = entradaDados.LeInteiro("Digite a quantidade de produtos");
+                    var valor = entradaDados.LeFloat("Digite o preço unitário do produto");
+                    var item = new ItemEstoque(produto, quantidade, valor);
+                    estoque.Insere(item);
+                    Console.WriteLine("Produto cadastrado com sucesso!");
+                }
+
+            } while (codigo != 0);
+        }
+
+        private void ConfereValidade()
+        {
+            Console.WriteLine("Data para verificação de validade");
+            var data1 = entradaDados.LeData();
+            Console.WriteLine("Produtos perecíveis a vencer");
+            Console.WriteLine();
+            cadProdutos.ProdutosAVencer(data1);
+        }
+
+        private void EscreveProdutos()
+        {
+            Console.WriteLine("Produtos Duráveis");
+            Console.WriteLine("");
+            cadProdutos.PrintaProduto(1);
+            Console.WriteLine(new string('-', 30));
+            Console.WriteLine("Produtos Digitais");
+            Console.WriteLine("");
+            cadProdutos.PrintaProduto(2);
+            Console.WriteLine(new string('-', 30));
+            Console.WriteLine("Produtos Perecíveis");
+            Console.WriteLine("");
+            cadProdutos.PrintaProduto(3);
+        }
+        private void CadastroVenda()
+        {
+            double totalParcial;
+            Cliente cliente1;
+            Console.WriteLine("Clientes");
+            cadClientes.PrintaClientes();
+            Console.WriteLine("Digite o código de um cliente cadastrado");
+            int controle = 0;
+            do
+            {
+                var codigo1 = entradaDados.LeInteiro("Código");
+                cliente1 = cadClientes.BuscaCliente(codigo1);
+                if (cliente1 != null)
+                {
+                    controle = 1;
+                }
+                else
+                {
+                    Console.WriteLine("Cliente não encontrado!");
+                }
+            } while (controle == 0);
+            Console.WriteLine("Checagem de estoque para os produtos, por favor digite os códigos de cada produto");
+            var vendas = new List<ItemVenda>();
+            int codigo2;
+            do
+            {
+                estoque.EscreveEstoque();
+                Console.WriteLine("Informe o código do produto vendido, para continuar a venda digite 0");
+                codigo2 = entradaDados.LeInteiro("Código");
+                if (estoque.VerificaEstoque(codigo2))
+                {
+                    var quantidade1 = entradaDados.LeInteiro("Digite a quantidade de itens");
+                    if (estoque.VerificaEstoque(codigo2, quantidade1))
+                    {
+                        Console.WriteLine("Quantidade de itens disponível em estoque!");
+                        totalParcial = estoque.RetornaValorUnitario(codigo2);
+                        var item = new ItemVenda(estoque.GetItemPorCodigo(codigo2), quantidade1, totalParcial * quantidade1);
+                        estoque.AtualizaEstoque(codigo2, quantidade1);
+                        vendas.Add(item);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quantidade insuficiente em estoque");
+                    }
+                }
+                else if (codigo2 != 0)
+                {
+                    Console.WriteLine("Produto não encontrado em estoque");
+                }
+            } while (codigo2 != 0);
+            Console.WriteLine("Informe a data de venda");
+            var dataVenda = entradaDados.LeData();
+            foreach (ItemVenda item in vendas)
+            {
+                total = total + item.Valor;
+            }
+            var venda1 = new Venda(vendas, cliente1, dataVenda, total);
+            cadVendas.Insere(venda1);
+
         }
     }
 }

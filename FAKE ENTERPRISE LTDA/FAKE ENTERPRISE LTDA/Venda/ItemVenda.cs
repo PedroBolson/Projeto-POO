@@ -18,5 +18,10 @@ namespace FAKE_ENTERPRISE_LTDA
             this.Quantidade = quantidade;
             this.Valor = valor;
         }
+
+        public override string ToString() 
+        {
+            return $"Produto: {Item.Descricao} / Quantidade: {Quantidade} / Valor: R${Valor:F2}";
+        }
     }
 }
