@@ -33,7 +33,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 Console.WriteLine(item.ToString());
             }
 
-            Console.WriteLine(new string('-', 30));
+            Console.WriteLine("__________");
             return "Venda listada com sucesso!";
         }
     }

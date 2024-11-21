@@ -19,6 +19,17 @@ namespace FAKE_ENTERPRISE_LTDA
             itens.Add(item);
         }
 
+        public void AtualizaValor(int codigo, double valor)
+        {
+            foreach(ItemEstoque item in itens)
+            {
+                if(item.Item.Codigo == codigo)
+                {
+                    item.Valor = valor;
+                }
+            }
+        }
+
         public double RetornaValorUnitario(int codigo)
         {
             foreach(ItemEstoque item in itens)
@@ -55,6 +66,18 @@ namespace FAKE_ENTERPRISE_LTDA
             return false;
         }
 
+        public void AumentaEstoque(int codigo, int quantidade)
+        {
+            foreach (ItemEstoque item in itens)
+            {
+                if (item.Item.Codigo == codigo)
+                {
+                    item.Quantidade += quantidade;
+                    break;
+                }
+            }
+        }
+
         public void AtualizaEstoque(int codigo, int quantidade)
         {
             foreach(ItemEstoque item in itens)
@@ -83,7 +106,7 @@ namespace FAKE_ENTERPRISE_LTDA
         {
             foreach (ItemEstoque item in itens)
             {
-                Console.WriteLine($"Código: {item.Item.Codigo} Produto: {item.Item.Descricao} Quantidade: {item.Quantidade}");
+                Console.WriteLine($"Código: {item.Item.Codigo} / Produto: {item.Item.Descricao} / Quantidade: {item.Quantidade}");
             }
         }
 
