@@ -128,7 +128,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     } while (!verifica);
                     descricao = entradaDados.LeString("Digite a descrição do produto");
                     fabricante = entradaDados.LeString("Digite o fabricante");
-                    var tamanho = entradaDados.LeFloat("Digite o tamanho do produto");
+                    var tamanho = entradaDados.LeFloat("Digite o tamanho do produto(MB)");
                     var formato = entradaDados.LeString("Digite o formato do produto");
                     var link = entradaDados.LeString("Digite o link do produto");
                     var produto2 = new Digital(codigo, descricao, fabricante, tamanho, formato, link);

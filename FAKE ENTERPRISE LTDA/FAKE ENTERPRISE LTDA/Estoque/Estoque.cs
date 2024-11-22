@@ -18,7 +18,10 @@ namespace FAKE_ENTERPRISE_LTDA
         {
             itens.Add(item);
         }
-
+        public int GetTamanho()
+        {
+            return itens.Count;
+        }
         public void AtualizaValor(int codigo, double valor)
         {
             foreach(ItemEstoque item in itens)
@@ -106,7 +109,7 @@ namespace FAKE_ENTERPRISE_LTDA
         {
             foreach (ItemEstoque item in itens)
             {
-                Console.WriteLine($"Código: {item.Item.Codigo} / Produto: {item.Item.Descricao} / Quantidade: {item.Quantidade}");
+                Console.WriteLine($"Código: {item.Item.Codigo} / Produto: {item.Item.Descricao} / Quantidade: {item.Quantidade} / Valor unitário: R$ {item.Valor:F2}");
             }
         }
 

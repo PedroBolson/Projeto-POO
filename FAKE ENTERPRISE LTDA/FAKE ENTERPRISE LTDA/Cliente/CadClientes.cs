@@ -15,7 +15,10 @@ namespace FAKE_ENTERPRISE_LTDA
         {
             clientes.Add(cliente);
         }
-
+        public int GetTamanho()
+        {
+            return clientes.Count;
+        }
         public Cliente BuscaCliente(int codigo)
         {
             foreach(Cliente cliente in clientes)
