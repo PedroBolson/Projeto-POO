@@ -10,27 +10,19 @@ namespace FAKE_ENTERPRISE_LTDA
 {
     public class Menu
     {
-        private Duravel duravel;
-        private Digital digital;
-        private Perecivel perecivel;
-        private Cliente cliente;
-        private ItemEstoque itemEstoque;
-        private ItemVenda itemVenda;
-        private Venda venda;
-        private CadVendas cadVendas;
         private CadProdutos cadProdutos;
         private CadClientes cadClientes;
         private Estoque estoque;
-        Data data;
+        private CadVendas cadVendas;
         EntradaDados entradaDados;
         double total;
         public Menu()
         {
-            cadVendas = new CadVendas();
             cadProdutos = new CadProdutos();
             cadClientes = new CadClientes();
-            entradaDados = new EntradaDados();
             estoque = new Estoque();
+            cadVendas = new CadVendas();
+            entradaDados = new EntradaDados();
         }
         private void EscreveMenu()
         {

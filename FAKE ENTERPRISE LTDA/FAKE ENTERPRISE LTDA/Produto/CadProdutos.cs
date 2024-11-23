@@ -62,6 +62,7 @@ namespace FAKE_ENTERPRISE_LTDA
                         if (produto is Duravel duravel)
                         {
                             duravel.ExibirDetalhes();
+                            Console.WriteLine();
                         }
                     }
                     break;
@@ -71,6 +72,7 @@ namespace FAKE_ENTERPRISE_LTDA
                         if (produto is Digital digital)
                         {
                             digital.ExibirDetalhes();
+                            Console.WriteLine();
                         }
                     }
                     break;
@@ -80,6 +82,7 @@ namespace FAKE_ENTERPRISE_LTDA
                         if (produto is Perecivel perecivel)
                         {
                             perecivel.ExibirDetalhes();
+                            Console.WriteLine();
                         }
                     }
                     break;
