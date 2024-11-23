@@ -12,6 +12,23 @@ namespace FAKE_ENTERPRISE_LTDA
         EntradaDados entradaDados = new EntradaDados();
         protected List<Produto> produtos = new List<Produto>();
 
+        public void ComecaDados()
+        {
+            var duravel = new Duravel(1000, "Telefone S24 Ultra 256GB", "Samsung", 60, "Titânio e vidro", false);
+            this.Insere(duravel);
+            duravel = new Duravel(1001, "Galaxy Book Ultra", "Samsung", 60, "Alumínio", false);
+            this.Insere(duravel);
+            var digital = new Digital(2000, "Cartão presente spotify 30 dias", "Spotify", 0, "Código de resgate online", "amazon.com.br/produto/cartão_presente_spotify");
+            this.Insere(digital);
+            digital = new Digital(2001, "Black Myth: Wukong", "Game Science", 118000, "Jogo digital", "steam.com.br/game/blackmythwukong");
+            this.Insere(digital);
+            var date = new Data(12,12,2027);
+            var perecivel = new Perecivel(3000, "Iogurte", "Batavo", date, true, "Derivados do leite");
+            this.Insere(perecivel);
+            date = new Data(01, 05, 2025);
+            perecivel = new Perecivel(3001, "Frango", "Nat", date, true, "Frango");
+            this.Insere(perecivel);
+        }
         public bool ConfereCodigo(int codigo)
         {
             foreach (Produto produto in produtos)

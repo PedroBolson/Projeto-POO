@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,16 @@ namespace FAKE_ENTERPRISE_LTDA
         private List<Cliente> clientes = new List<Cliente>();
         EntradaDados entradaDados = new EntradaDados();
 
+        public void ComecaDados()
+        {
+            var endereco = new Endereco("Avenida Rio Branco", 1096, "Apto 901", "Rio Branco", "95090-200", "Caxias do sul", "RS");
+            var date = new Data(12, 11, 1998);
+            var cliente = new Cliente(1000, "Pedro Bolson", endereco, "54 3029-5158", "54 99980-9543", date);
+            this.Insere(cliente);
+            date = new Data(18, 06, 1954);
+            cliente = new Cliente(1001, "Roberto Bolson", endereco, "54 3029-5158", "54 99963-7865", date);
+            this.Insere(cliente);
+        }
         public void Insere(Cliente cliente)
         {
             clientes.Add(cliente);

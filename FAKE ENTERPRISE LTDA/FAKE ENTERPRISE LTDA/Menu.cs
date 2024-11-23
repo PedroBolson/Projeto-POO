@@ -40,6 +40,15 @@ namespace FAKE_ENTERPRISE_LTDA
         public void MenuOpcoes()
         {
             Console.WriteLine("Bem vindo ao sistema da Fake Enterprise LTDA");
+            var option = entradaDados.LeString("Deseja pré carregar dados a lista de Produtos e Clientes? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
+            if (option == "Sim" || option == "sim")
+            {
+                cadProdutos.ComecaDados();
+                cadClientes.ComecaDados();
+                Console.WriteLine("Dados carregados com sucesso!");
+            }
+            Thread.Sleep(1000);
+            Console.Clear();
             int opcao;
             this.EscreveMenu();
             opcao = entradaDados.LeInteiro("Opção: ", 1, 9);
@@ -179,7 +188,7 @@ namespace FAKE_ENTERPRISE_LTDA
             {
                 Console.WriteLine("Nenhum cliente cadastrado! por favor cadastre um cliente na opção 4 do menu.");
             }
-            else if(estoque.GetTamanho() == 0)
+            else if (estoque.GetTamanho() == 0)
             {
                 Console.WriteLine("Nenhum item cadastrado em estoque!");
             }

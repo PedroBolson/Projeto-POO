@@ -28,7 +28,7 @@ namespace FAKE_ENTERPRISE_LTDA
         }
         public override string ToString()
         {
-            return $"Rua: {Rua}, {Numero}, Complemento: {Complemento}, Bairro: {Bairro}, CEP: {Cep}, Cidade:{Cidade}, UF:{Uf}";
+            return $" {Rua}, {Numero}, Complemento: {Complemento}, Bairro: {Bairro}, CEP: {Cep}, Cidade:{Cidade}, UF:{Uf}";
         }
 
     }
