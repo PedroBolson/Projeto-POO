@@ -28,6 +28,9 @@ namespace FAKE_ENTERPRISE_LTDA
             date = new Data(01, 05, 2025);
             perecivel = new Perecivel(3001, "Frango", "Nat", date, true, "Frango");
             this.Insere(perecivel);
+            date = new Data(10, 01, 2017);
+            perecivel = new Perecivel(3002, "Ovos", "Naturovos", date, true, "Ovo");
+            this.Insere(perecivel);
         }
         public bool ConfereCodigo(int codigo)
         {

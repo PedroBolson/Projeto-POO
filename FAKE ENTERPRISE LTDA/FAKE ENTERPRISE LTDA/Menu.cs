@@ -120,8 +120,8 @@ namespace FAKE_ENTERPRISE_LTDA
                 {
                     Console.WriteLine("Produto já encontrado em estoque!");
                     Console.WriteLine($"Valor unitário do protudo R${estoque.RetornaValorUnitario(codigo):F2}");
-                    var control = entradaDados.LeInteiro("Deseja alterar o valor? 1 - sim / 2 - não", 1, 2);
-                    if (control == 1)
+                    var control = entradaDados.LeString("Deseja alterar o valor unitário do produto? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
+                    if (control == "Sim" || control == "sim")
                     {
                         var novoPreco = entradaDados.LeDouble("Digite o novo valor do produto: ");
                         estoque.AtualizaValor(codigo, novoPreco);
@@ -152,7 +152,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 else if (codigo != 0)
                 {
                     Console.WriteLine("Produto não encontrado!");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
                     Console.Clear();
                 }
             } while (codigo != 0);
@@ -221,14 +221,14 @@ namespace FAKE_ENTERPRISE_LTDA
                     {
                         Console.WriteLine("Cliente não encontrado!");
                     }
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
                     Console.Clear();
                 } while (controle == 0);
-                Console.WriteLine("Checagem de estoque!");
                 var vendas = new List<ItemVenda>();
                 int codigo2;
                 do
                 {
+                    Console.WriteLine("Checagem de estoque!");
                     estoque.EscreveEstoque();
                     codigo2 = entradaDados.LeInteiro("Informe o código do produto vendido ou digite 0 para finalizar a venda!");
                     if (estoque.VerificaEstoque(codigo2))
@@ -252,7 +252,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     {
                         Console.WriteLine("Produto não encontrado em estoque");
                     }
-                    Thread.Sleep(1500);
+                    Thread.Sleep(1000);
                     Console.Clear();
                 } while (codigo2 != 0);
                 Console.WriteLine("Data de venda");
