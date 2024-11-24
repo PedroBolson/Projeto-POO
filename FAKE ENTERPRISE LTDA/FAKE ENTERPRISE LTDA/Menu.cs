@@ -40,7 +40,7 @@ namespace FAKE_ENTERPRISE_LTDA
         public void MenuOpcoes()
         {
             Console.WriteLine("Bem vindo ao sistema da Fake Enterprise LTDA");
-            var option = entradaDados.LeString("Deseja pré carregar dados à lista de Produtos e Clientes? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
+            var option = entradaDados.LeString("Deseja pré carregar dados à lista de Produtos e Clientes? (Sim) (Nao)", "Sim", "Nao");
             if (option == "Sim" || option == "sim")
             {
                 cadProdutos.ComecaDados();
@@ -120,7 +120,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 {
                     Console.WriteLine("Produto já encontrado em estoque!");
                     Console.WriteLine($"Valor unitário do protudo R${estoque.RetornaValorUnitario(codigo):F2}");
-                    var control = entradaDados.LeString("Deseja alterar o valor unitário do produto? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
+                    var control = entradaDados.LeString("Deseja alterar o valor unitário do produto? (Sim) (Nao)", "Sim", "Nao");
                     if (control == "Sim" || control == "sim")
                     {
                         var novoPreco = entradaDados.LeDouble("Digite o novo valor do produto: ");
@@ -166,13 +166,13 @@ namespace FAKE_ENTERPRISE_LTDA
                 Console.WriteLine("Data para verificação de validade");
                 data1 = entradaDados.LeData();
                 Console.WriteLine("Produtos perecíveis a vencer");
-                Console.WriteLine();
                 cadProdutos.ProdutosAVencer(data1);
             }
             else
             {
                 DateTime agora = DateTime.Now;
                 data1 = new Data(agora.Day, agora.Month, agora.Year);
+                Console.WriteLine("Produtos perecíveis a vencer");
                 cadProdutos.ProdutosAVencer(data1);
             }
         }
