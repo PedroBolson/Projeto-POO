@@ -168,14 +168,15 @@ namespace FAKE_ENTERPRISE_LTDA
         private void EscreveProdutos()
         {
             Console.WriteLine("Produtos Duráveis");
-            Console.WriteLine("");
+            Console.WriteLine();
             cadProdutos.PrintaProduto(1);
             Console.WriteLine("______");
             Console.WriteLine("Produtos Digitais");
-            Console.WriteLine("");
+            Console.WriteLine();
             cadProdutos.PrintaProduto(2);
             Console.WriteLine("______");
             Console.WriteLine("Produtos Perecíveis");
+            Console.WriteLine();
             cadProdutos.PrintaProduto(3);
             Console.WriteLine("______");
         }

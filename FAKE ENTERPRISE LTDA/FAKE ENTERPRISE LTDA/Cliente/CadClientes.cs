@@ -90,6 +90,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public void PrintaClientes()
         {
+            clientes.Sort((p1, p2) => p1.Codigo.CompareTo(p2.Codigo)); // printa sempre em ordem crescente de código
             foreach (Cliente cliente in clientes)
             {
                 Console.WriteLine($"Código: {cliente.Codigo}, Nome: {cliente.Nome}");

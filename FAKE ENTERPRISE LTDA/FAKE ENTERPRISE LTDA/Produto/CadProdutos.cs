@@ -71,7 +71,9 @@ namespace FAKE_ENTERPRISE_LTDA
         }
         public void PrintaProduto(int referencia)
         {
-            switch (referencia)
+            produtos.Sort((p1, p2) => p1.Codigo.CompareTo(p2.Codigo)); // printa sempre em ordem crescente de código
+
+            switch (referencia) 
             {
                 case 1:
                     foreach (Produto produto in produtos)

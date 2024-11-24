@@ -107,6 +107,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public void EscreveEstoque()
         {
+            itens.Sort((p1, p2) => p1.Item.Codigo.CompareTo(p2.Item.Codigo)); // printa sempre em ordem crescente de código
             foreach (ItemEstoque item in itens)
             {
                 Console.WriteLine($"Código: {item.Item.Codigo} / Produto: {item.Item.Descricao} / Quantidade: {item.Quantidade} / Valor unitário: R$ {item.Valor:F2}");
