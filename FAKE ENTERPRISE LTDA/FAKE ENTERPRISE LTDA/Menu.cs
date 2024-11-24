@@ -40,7 +40,7 @@ namespace FAKE_ENTERPRISE_LTDA
         public void MenuOpcoes()
         {
             Console.WriteLine("Bem vindo ao sistema da Fake Enterprise LTDA");
-            var option = entradaDados.LeString("Deseja pré carregar dados a lista de Produtos e Clientes? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
+            var option = entradaDados.LeString("Deseja pré carregar dados à lista de Produtos e Clientes? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
             if (option == "Sim" || option == "sim")
             {
                 cadProdutos.ComecaDados();
