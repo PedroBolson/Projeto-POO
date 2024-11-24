@@ -159,11 +159,22 @@ namespace FAKE_ENTERPRISE_LTDA
         }
         private void ConfereValidade()
         {
-            Console.WriteLine("Data para verificação de validade");
-            var data1 = entradaDados.LeData();
-            Console.WriteLine("Produtos perecíveis a vencer");
-            Console.WriteLine();
-            cadProdutos.ProdutosAVencer(data1);
+            Data data1;
+            var escolha = entradaDados.LeInteiro("Digite 1 para comparar com a data atual ou 2 para comparar com uma data de sua escolha", 1, 2);
+            if (escolha == 2)
+            {
+                Console.WriteLine("Data para verificação de validade");
+                data1 = entradaDados.LeData();
+                Console.WriteLine("Produtos perecíveis a vencer");
+                Console.WriteLine();
+                cadProdutos.ProdutosAVencer(data1);
+            }
+            else
+            {
+                DateTime agora = DateTime.Now;
+                data1 = new Data(agora.Day, agora.Month, agora.Year);
+                cadProdutos.ProdutosAVencer(data1);
+            }
         }
         private void EscreveProdutos()
         {
