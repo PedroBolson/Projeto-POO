@@ -8,7 +8,7 @@ namespace FAKE_ENTERPRISE_LTDA
 {
     public class Perecivel : Produto
     {
-        Data data;
+        Data data = new Data();
         public Data DataValidade { get; set; }
         public bool Organico { get; set; }
         public string Ingredientes { get; set; }
@@ -18,7 +18,6 @@ namespace FAKE_ENTERPRISE_LTDA
             this.DataValidade = dataValidade;
             this.Organico = organico;
             this.Ingredientes = ingredientes;
-            this.data = new Data();
         }
         public int DiasAteVencimento(Data dataRef)
         {
@@ -29,13 +28,13 @@ namespace FAKE_ENTERPRISE_LTDA
 
             if (data1 > data2)
             {
-                Console.Write($"Cuidado! No dia {dataRef} o produto estará vencido há");
+                Console.Write($"Cuidado! Em {dataRef} o produto estará vencido há");
                 var data3 = data1 - data2;
                 return data3;
             }
             else
             {
-                Console.Write($"A validade do produto no dia {dataRef} terá mais");
+                Console.Write($"A validade do produto em {dataRef} terá mais");
                 var data3 = data2 - data1;
                 return data3;
             }

@@ -42,7 +42,6 @@ namespace FAKE_ENTERPRISE_LTDA
                     teste = false; // Reinicia o teste para repetir o loop
                 }
             } while (!teste);
-
             return n;
         }
         public double LeDouble(string mensagem) //Entrada de dados com consistência - executa até ser digitado um inteiro. Mensagem de entrada inválida
