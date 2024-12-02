@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FAKE_ENTERPRISE_LTDA
@@ -18,8 +19,8 @@ namespace FAKE_ENTERPRISE_LTDA
         static void Main(string[] args)
         { 
             Program enterprise = new Program();
-            Console.WriteLine("Digite qualquer tecla para sair!");
-            Console.ReadKey();
+            Console.WriteLine("Obrigado por usar o sistema FAKE ENTERPRISE!");
+            Thread.Sleep(2000);
         }
     }
 }
