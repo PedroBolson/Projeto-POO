@@ -46,8 +46,8 @@ namespace FAKE_ENTERPRISE_LTDA
                 cadProdutos.ComecaDados();
                 cadClientes.ComecaDados();
                 Console.WriteLine("Dados carregados com sucesso!");
+                Thread.Sleep(900);
             }
-            Thread.Sleep(1000);
             Console.Clear();
             int opcao;
             this.EscreveMenu();
@@ -69,7 +69,6 @@ namespace FAKE_ENTERPRISE_LTDA
                         cadClientes.CadastroCliente();
                         break;
                     case 5:
-                        Console.WriteLine("Clientes");
                         cadClientes.PrintaClientes();
                         break;
                     case 6:
@@ -105,7 +104,6 @@ namespace FAKE_ENTERPRISE_LTDA
                 int option = 0;
                 option = entradaDados.LeInteiro("Opção: ", 1, 3);
                 cadProdutos.CadastroPrduto(option);
-                Console.WriteLine("Produto cadastrado com sucesso!");
             }
         }
         private void CadastroEstoque()
@@ -255,8 +253,18 @@ namespace FAKE_ENTERPRISE_LTDA
                     Thread.Sleep(1000);
                     Console.Clear();
                 } while (codigo2 != 0);
-                Console.WriteLine("Data de venda");
-                var dataVenda = entradaDados.LeData();
+                Data dataVenda;
+                var escolha = entradaDados.LeInteiro("Digite 1 caso a venda seja na data atual ou 2 para inserir uma data de sua escolha", 1, 2);
+                if (escolha == 2)
+                {
+                    Console.WriteLine("Data de venda");
+                    dataVenda = entradaDados.LeData();
+                }
+                else
+                {
+                    DateTime agora = DateTime.Now;
+                    dataVenda = new Data(agora.Day, agora.Month, agora.Year);
+                }
                 total = 0.0;
                 foreach (ItemVenda item in vendas)
                 {

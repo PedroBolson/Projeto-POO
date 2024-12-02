@@ -21,7 +21,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public override string ToString() 
         {
-            return $"Produto: {Item.Descricao} / Quantidade: {Quantidade} / Valor: R$ {Valor:F2}";
+            return $"Produto: {Item.Descricao} / Quantidade: {Quantidade} / Preço unitário: R$ {Valor/Quantidade:F2} / Valor total do produto: R$ {Valor:F2}";
         }
     }
 }

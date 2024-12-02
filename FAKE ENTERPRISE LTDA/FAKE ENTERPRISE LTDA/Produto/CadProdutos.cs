@@ -22,7 +22,7 @@ namespace FAKE_ENTERPRISE_LTDA
             this.Insere(digital);
             digital = new Digital(2001, "Black Myth: Wukong", "Game Science", 118000, "Jogo digital", "steam.com.br/game/blackmythwukong");
             this.Insere(digital);
-            var date = new Data(12,12,2027);
+            var date = new Data(12, 12, 2027);
             var perecivel = new Perecivel(3000, "Iogurte", "Batavo", date, true, "Derivados do leite");
             this.Insere(perecivel);
             date = new Data(01, 05, 2025);
@@ -70,13 +70,13 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public void PrintaProduto(Produto produto)
         {
-                produto.ExibirDetalhes();
+            produto.ExibirDetalhes();
         }
         public void PrintaProduto(int referencia)
         {
             produtos.Sort((p1, p2) => p1.Codigo.CompareTo(p2.Codigo)); // printa sempre em ordem crescente de código
 
-            switch (referencia) 
+            switch (referencia)
             {
                 case 1:
                     foreach (Produto produto in produtos)
@@ -122,13 +122,17 @@ namespace FAKE_ENTERPRISE_LTDA
                     bool manutencao1 = false;
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto: ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
                             Console.WriteLine("Código de produto já existe!");
                         }
                     } while (!verifica);
+                    if (codigo == 0)
+                    {
+                        break;
+                    }
                     descricao = entradaDados.LeString("Digite a descrição do produto");
                     fabricante = entradaDados.LeString("Digite o fabricante");
                     var garantia = entradaDados.LeInteiro("Digite o tempo de garantia em meses");
@@ -140,17 +144,22 @@ namespace FAKE_ENTERPRISE_LTDA
                     }
                     var produto1 = new Duravel(codigo, descricao, fabricante, garantia, material, manutencao1);
                     this.Insere(produto1);
+                    Console.WriteLine("Produto cadastrado com sucesso!");
                     break;
                 case 2:
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto: ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
                             Console.WriteLine("Código de produto já existe!");
                         }
                     } while (!verifica);
+                    if (codigo == 0)
+                    {
+                        break;
+                    }
                     descricao = entradaDados.LeString("Digite a descrição do produto");
                     fabricante = entradaDados.LeString("Digite o fabricante");
                     var tamanho = entradaDados.LeFloat("Digite o tamanho do produto(MB)");
@@ -158,18 +167,23 @@ namespace FAKE_ENTERPRISE_LTDA
                     var link = entradaDados.LeString("Digite o link do produto");
                     var produto2 = new Digital(codigo, descricao, fabricante, tamanho, formato, link);
                     this.Insere(produto2);
+                    Console.WriteLine("Produto cadastrado com sucesso!");
                     break;
                 case 3:
                     bool organico1 = false;
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto: ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
                             Console.WriteLine("Código de produto já existe!");
                         }
                     } while (!verifica);
+                    if (codigo == 0)
+                    {
+                        break;
+                    }
                     descricao = entradaDados.LeString("Digite a descrição do produto");
                     fabricante = entradaDados.LeString("Digite o fabricante");
                     Console.WriteLine("Data de validade");
@@ -182,6 +196,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     var ingredientes = entradaDados.LeString("Digite os ingredientes: ");
                     var produto3 = new Perecivel(codigo, descricao, fabricante, dataValidade, organico1, ingredientes);
                     this.Insere(produto3);
+                    Console.WriteLine("Produto cadastrado com sucesso!");
                     break;
                 default:
                     throw new Exception("Tipo inválido");

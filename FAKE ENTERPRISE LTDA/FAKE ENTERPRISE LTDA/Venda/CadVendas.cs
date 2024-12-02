@@ -30,13 +30,15 @@ namespace FAKE_ENTERPRISE_LTDA
             if (vendas.Count == 0)
             {
                 Console.WriteLine("Nenhuma venda cadastrada.");
-                return;
-            }
 
-            Console.WriteLine("Lista de Vendas:");
-            foreach (Venda venda in vendas)
+            }
+            else
             {
-                venda.ToString();
+                Console.WriteLine("Lista de Vendas:");
+                foreach (Venda venda in vendas)
+                {
+                    venda.ToString();
+                }
             }
         }
     }

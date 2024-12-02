@@ -64,13 +64,17 @@ namespace FAKE_ENTERPRISE_LTDA
             int codigo;
             do
             {
-                codigo = entradaDados.LeInteiro("Digite o código do cliente: ");
+                codigo = entradaDados.LeInteiro("Digite o código do cliente(digite 0 para cancelar e voltar ao menu): ");
                 verifica = this.ConfereCodigo(codigo);
                 if (!verifica)
                 {
                     Console.WriteLine("Código de cliente já existe!");
                 }
             } while (!verifica);
+            if (codigo == 0)
+            {
+                return;
+            }
             var nome = entradaDados.LeString("Nome do cliente:");
             var rua = entradaDados.LeString("Rua de residência:");
             var numero = entradaDados.LeInteiro("Número da residência:");
@@ -90,7 +94,13 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public void PrintaClientes()
         {
+            if(this.GetTamanho() == 0) 
+            {
+                Console.WriteLine("Nenhum cliente cadastrado!");
+                return;
+            }
             clientes.Sort((p1, p2) => p1.Codigo.CompareTo(p2.Codigo)); // printa sempre em ordem crescente de código
+            Console.WriteLine("Clientes");
             foreach (Cliente cliente in clientes)
             {
                 Console.WriteLine($"Código: {cliente.Codigo}, Nome: {cliente.Nome}");

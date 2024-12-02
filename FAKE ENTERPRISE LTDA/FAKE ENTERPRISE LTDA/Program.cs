@@ -20,7 +20,7 @@ namespace FAKE_ENTERPRISE_LTDA
         { 
             Program enterprise = new Program();
             Console.WriteLine("Obrigado por usar o sistema FAKE ENTERPRISE!");
-            Thread.Sleep(2000);
+            Thread.Sleep(1200);
         }
     }
 }

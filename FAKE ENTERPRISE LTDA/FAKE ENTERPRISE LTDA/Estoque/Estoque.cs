@@ -11,8 +11,6 @@ namespace FAKE_ENTERPRISE_LTDA
     public class Estoque
     {
         private List<ItemEstoque> itens = new List<ItemEstoque>();
-        CadProdutos cadProdutos = new CadProdutos();
-        EntradaDados entradaDados = new EntradaDados();
 
         public void Insere(ItemEstoque item)
         {
