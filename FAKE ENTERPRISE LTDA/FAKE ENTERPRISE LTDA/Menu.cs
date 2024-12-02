@@ -191,6 +191,7 @@ namespace FAKE_ENTERPRISE_LTDA
         }
         private void CadastroVenda()
         {
+            int codigo1;
             double totalParcial;
             Cliente cliente1;
             int controle = 0;
@@ -208,7 +209,11 @@ namespace FAKE_ENTERPRISE_LTDA
                 {
                     Console.WriteLine("Clientes");
                     cadClientes.PrintaClientes();
-                    var codigo1 = entradaDados.LeInteiro("Digite o código de um cliente cadastrado:");
+                    codigo1 = entradaDados.LeInteiro("Digite o código de um cliente cadastrado(digite 0 caso queira cancelar e voltar ao menu):");
+                    if (codigo1 == 0)
+                    {
+                        return;
+                    }
                     cliente1 = cadClientes.BuscaCliente(codigo1);
                     if (cliente1 != null)
                     {
