@@ -54,7 +54,188 @@ namespace FAKE_ENTERPRISE_LTDA
             return null;
         }
 
+        public void ExcluiProduto(int codigo)
+        {
+            produtos.RemoveAll(p => p.Codigo == codigo);
+        }
 
+        public void MudancaParametros(int codigo)
+        {
+            int escolha, cod;
+            bool verifica;
+            bool organico1 = false, manutencao1 = false;
+            foreach (Produto produto in produtos)
+            {
+                if (produto.Codigo == codigo)
+                {
+
+                    if (produto is Perecivel perecivel)
+                    {
+                        Console.Clear();
+                        perecivel.ExibirDetalhes();
+                        Console.WriteLine("O que desejaria mudar? Escolha uma opção");
+                        Console.WriteLine("1 - Código");
+                        Console.WriteLine("2 - Descrição");
+                        Console.WriteLine("3 - Fabricante");
+                        Console.WriteLine("4 - Data de validade");
+                        Console.WriteLine("5 - Orgânico");
+                        Console.WriteLine("6 - Ingredientes");
+                        Console.WriteLine("0 - Cancelar alteração");
+                        escolha = entradaDados.LeInteiro("Opção: ", 0, 6);
+                        switch (escolha)
+                        {
+                            case 0:
+                                break;
+                            case 1:
+                                do
+                                {
+                                    cod = entradaDados.LeInteiro("Digite o código do produto: ");
+                                    verifica = this.ConfereCodigo(cod);
+                                    if (!verifica)
+                                    {
+                                        Console.WriteLine("Código de produto já existe!");
+                                    }
+                                } while (!verifica);
+                                perecivel.Codigo = cod;
+                                break;
+                            case 2:
+                                var descricao = entradaDados.LeString("Digite a descrição do produto");
+                                perecivel.Descricao = descricao;
+                                break;
+                            case 3:
+                                var fabricante = entradaDados.LeString("Digite o fabricante");
+                                perecivel.Fabricante = fabricante;
+                                break;
+                            case 4:
+                                Console.WriteLine("Nova data de validade");
+                                var dataValidade = entradaDados.LeData();
+                                perecivel.DataValidade = dataValidade;
+                                break;
+                            case 5:
+                                var organico = entradaDados.LeString("O produto é orgânico? (Sim) ou (Nao) - Favor não usar acentos", "Sim", "Nao");
+                                if (organico == "Sim" || organico == "sim")
+                                {
+                                    organico1 = true;
+                                }
+                                perecivel.Organico = organico1;
+                                break;
+                            case 6:
+                                var ingredientes = entradaDados.LeString("Digite os ingredientes: ");
+                                perecivel.Ingredientes = ingredientes;
+                                break;
+                        }
+                    }
+                    else if (produto is Duravel duravel)
+                    {
+                        duravel.ExibirDetalhes();
+                        Console.WriteLine("O que desejaria mudar? Escolha uma opção");
+                        Console.WriteLine("1 - Código");
+                        Console.WriteLine("2 - Descrição");
+                        Console.WriteLine("3 - Fabricante");
+                        Console.WriteLine("4 - Garantia");
+                        Console.WriteLine("5 - Material");
+                        Console.WriteLine("6 - Manutenção");
+                        Console.WriteLine("0 - Cancelar alteração");
+                        escolha = entradaDados.LeInteiro("Opção: ", 0, 6);
+                        switch (escolha)
+                        {
+                            case 0:
+                                break;
+                            case 1:
+                                do
+                                {
+                                    cod = entradaDados.LeInteiro("Digite o código do produto: ");
+                                    verifica = this.ConfereCodigo(cod);
+                                    if (!verifica)
+                                    {
+                                        Console.WriteLine("Código de produto já existe!");
+                                    }
+                                } while (!verifica);
+                                duravel.Codigo = cod;
+                                break;
+                            case 2:
+                                var descricao = entradaDados.LeString("Digite a descrição do produto");
+                                duravel.Descricao = descricao;
+                                break;
+                            case 3:
+                                var fabricante = entradaDados.LeString("Digite o fabricante");
+                                duravel.Fabricante = fabricante;
+                                break;
+                            case 4:
+                                var garantia = entradaDados.LeInteiro("Digite o tempo de garantia em meses");
+                                duravel.Garantia = garantia;
+                                break;
+                            case 5:
+                                var material = entradaDados.LeString("Digite o material do produto: ");
+                                duravel.Material = material;
+                                break;
+                            case 6:
+                                var manutencao = entradaDados.LeString("O produto precisa de manutenção? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
+                                if (manutencao == "Sim" || manutencao == "sim")
+                                {
+                                    manutencao1 = true;
+                                }
+                                duravel.Manutencao = manutencao1;
+                                break;
+                        }
+                    }
+                    else if (produto is Digital digital)
+                    {
+                        digital.ExibirDetalhes();
+                        Console.WriteLine("O que desejaria mudar? Escolha uma opção");
+                        Console.WriteLine("1 - Código");
+                        Console.WriteLine("2 - Descrição");
+                        Console.WriteLine("3 - Fabricante");
+                        Console.WriteLine("4 - Tamanho");
+                        Console.WriteLine("5 - Formato");
+                        Console.WriteLine("6 - Link");
+                        Console.WriteLine("0 - Cancelar alteração");
+                        escolha = entradaDados.LeInteiro("Opção: ", 0, 6);
+                        switch (escolha)
+                        {
+                            case 0:
+                                break;
+                            case 1:
+                                do
+                                {
+                                    cod = entradaDados.LeInteiro("Digite o código do produto: ");
+                                    verifica = this.ConfereCodigo(cod);
+                                    if (!verifica)
+                                    {
+                                        Console.WriteLine("Código de produto já existe!");
+                                    }
+                                } while (!verifica);
+                                digital.Codigo = cod;
+                                break;
+                            case 2:
+                                var descricao = entradaDados.LeString("Digite a descrição do produto");
+                                digital.Descricao = descricao;
+                                break;
+                            case 3:
+                                var fabricante = entradaDados.LeString("Digite o fabricante");
+                                digital.Fabricante = fabricante;
+                                break;
+                            case 4:
+                                var tamanho = entradaDados.LeFloat("Digite o tamanho do produto(MB)");
+                                digital.Tamanho = tamanho;
+                                break;
+                            case 5:
+                                var formato = entradaDados.LeString("Digite o formato do produto");
+                                digital.Formato = formato;
+                                break;
+                            case 6:
+                                var link = entradaDados.LeString("Digite o link do produto");
+                                digital.Link = link;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Produto não encontrado");
+                    }
+                }
+            }
+        }
         public void Insere(Produto prod)
         {
             produtos.Add(prod);
@@ -122,7 +303,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     bool manutencao1 = false;
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu): ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu anterior): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
@@ -137,7 +318,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     fabricante = entradaDados.LeString("Digite o fabricante");
                     var garantia = entradaDados.LeInteiro("Digite o tempo de garantia em meses");
                     var material = entradaDados.LeString("Digite o material do produto: ");
-                    var manutencao = entradaDados.LeString("O produto possui manutenção? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
+                    var manutencao = entradaDados.LeString("O produto precisa de manutenção? (Sim) (Nao) - Favor não usar acentos", "Sim", "Nao");
                     if (manutencao == "Sim" || manutencao == "sim")
                     {
                         manutencao1 = true;
@@ -149,7 +330,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 case 2:
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu): ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu anterior): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
@@ -173,7 +354,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     bool organico1 = false;
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu): ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu anterior): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {

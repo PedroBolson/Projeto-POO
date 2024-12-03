@@ -27,7 +27,7 @@ namespace FAKE_ENTERPRISE_LTDA
         private void EscreveMenu()
         {
             Console.WriteLine("Por favor, escolha uma opção:");
-            Console.WriteLine("1 - Cadastrar um produto");
+            Console.WriteLine("1 - Cadastrar, alterar ou excluir um produto");
             Console.WriteLine("2 - Listar produtos");
             Console.WriteLine("3 - Informar data e comparar validade de produtos perecíveis");
             Console.WriteLine("4 - Cadastrar cliente");
@@ -57,7 +57,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 switch (opcao)
                 {
                     case 1:
-                        this.AdicionaProduto();
+                        this.Opcao1();
                         break;
                     case 2:
                         this.EscreveProdutos();
@@ -88,6 +88,59 @@ namespace FAKE_ENTERPRISE_LTDA
                 opcao = entradaDados.LeInteiro("Opção: ", 1, 9);
             }
         }
+        private void Opcao1()
+        {
+            int opcao2, codigo;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Digite uma opção: ");
+                Console.WriteLine("1 - Cadastro de novo produto");
+                Console.WriteLine("2 - Mudança de parâmetros");
+                Console.WriteLine("3 - Excluir um produto");
+                Console.WriteLine("0 - Retornar ao menu principal");
+                opcao2 = entradaDados.LeInteiro("Opção: ");
+                switch (opcao2)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        Console.Clear();
+                        this.EscreveProdutos();
+                        this.AdicionaProduto();
+                        Console.WriteLine("Produto adicionado com sucesso!");
+                        Thread.Sleep(1200);
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine("Modo de alteração de dados de produto");
+                        this.EscreveProdutos();
+                        codigo = entradaDados.LeInteiro("Digite o código do produto a ser alterado(ou digite 0 para retornar)");
+                        if (codigo == 0)
+                        {
+                            break;
+                        }
+                        cadProdutos.MudancaParametros(codigo);
+                        Console.WriteLine("Produto alterado!");
+                        Thread.Sleep(1200);
+                        break;
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine("Modo de exclusão de produtos!");
+                        this.EscreveProdutos();
+                        codigo = entradaDados.LeInteiro("Digite o código do produto a ser excluído(ou digite 0 para retornar)");
+                        if (codigo == 0)
+                        {
+                            break;
+                        }
+                        cadProdutos.ExcluiProduto(codigo);
+                        Console.WriteLine("Produto excluído!");
+                        Thread.Sleep(1200);
+                        break;
+                }
+            } while (opcao2 != 0);
+
+        }
         private void AdicionaProduto()
         {
             var contagem = cadProdutos.GetTamanho();
@@ -106,6 +159,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 cadProdutos.CadastroPrduto(option);
             }
         }
+
         private void CadastroEstoque()
         {
             int codigo;
