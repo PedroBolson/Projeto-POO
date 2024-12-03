@@ -26,3 +26,10 @@ D:\Estudo\FSG\2024\Programação Orientada a Objetos\Projeto-POO-2-main\Projeto-
 D:\Estudo\FSG\2024\Programação Orientada a Objetos\Projeto-POO-2-main\Projeto-POO-2-main\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.csproj.CoreCompileInputs.cache
 D:\Estudo\FSG\2024\Programação Orientada a Objetos\Projeto-POO-2-main\Projeto-POO-2-main\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.exe
 D:\Estudo\FSG\2024\Programação Orientada a Objetos\Projeto-POO-2-main\Projeto-POO-2-main\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.pdb
+D:\Estudo\FSG\2024\Programação Orientada a Objetos\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\bin\Debug\FAKE ENTERPRISE LTDA.exe.config
+D:\Estudo\FSG\2024\Programação Orientada a Objetos\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\bin\Debug\FAKE ENTERPRISE LTDA.exe
+D:\Estudo\FSG\2024\Programação Orientada a Objetos\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\bin\Debug\FAKE ENTERPRISE LTDA.pdb
+D:\Estudo\FSG\2024\Programação Orientada a Objetos\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.csproj.AssemblyReference.cache
+D:\Estudo\FSG\2024\Programação Orientada a Objetos\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.csproj.CoreCompileInputs.cache
+D:\Estudo\FSG\2024\Programação Orientada a Objetos\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.exe
+D:\Estudo\FSG\2024\Programação Orientada a Objetos\FAKE ENTERPRISE LTDA\FAKE ENTERPRISE LTDA\obj\Debug\FAKE ENTERPRISE LTDA.pdb
