@@ -16,26 +16,40 @@ namespace FAKE_ENTERPRISE_LTDA
         {
             itens.Add(item);
         }
+
         public int GetTamanho()
         {
             return itens.Count;
         }
+
         public void AtualizaValor(int codigo, double valor)
         {
-            foreach(ItemEstoque item in itens)
+            foreach (ItemEstoque item in itens)
             {
-                if(item.Item.Codigo == codigo)
+                if (item.Item.Codigo == codigo)
                 {
                     item.Valor = valor;
                 }
             }
         }
 
+        public int RetornaQuantidade(int codigo)
+        {
+            foreach (ItemEstoque item in itens)
+            {
+                if (item.Item.Codigo == codigo)
+                {
+                    return item.Quantidade;
+                }
+            }
+            return 0;
+        }
+
         public double RetornaValorUnitario(int codigo)
         {
-            foreach(ItemEstoque item in itens)
+            foreach (ItemEstoque item in itens)
             {
-                if(item.Item.Codigo == codigo)
+                if (item.Item.Codigo == codigo)
                 {
                     return item.Valor;
                 }
@@ -45,7 +59,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public bool VerificaEstoque(int codigo)
         {
-            foreach(ItemEstoque item in itens)
+            foreach (ItemEstoque item in itens)
             {
                 if (item.Item.Codigo == codigo)
                 {
@@ -81,9 +95,9 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public void AtualizaEstoque(int codigo, int quantidade)
         {
-            foreach(ItemEstoque item in itens)
+            foreach (ItemEstoque item in itens)
             {
-                if(item.Item.Codigo == codigo)
+                if (item.Item.Codigo == codigo)
                 {
                     item.Quantidade -= quantidade;
                     break;
@@ -93,9 +107,9 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public Produto GetItemPorCodigo(int codigo)
         {
-            foreach(ItemEstoque item in itens)
+            foreach (ItemEstoque item in itens)
             {
-                if(item.Item.Codigo == codigo)
+                if (item.Item.Codigo == codigo)
                 {
                     return item.Item;
                 }

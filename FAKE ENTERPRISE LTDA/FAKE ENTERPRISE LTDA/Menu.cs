@@ -106,7 +106,9 @@ namespace FAKE_ENTERPRISE_LTDA
                         break;
                     case 1:
                         Console.Clear();
+                        Console.WriteLine("Produtos já cadastrados:");
                         this.EscreveProdutos();
+                        Console.WriteLine("Modo de cadastro de produtos");
                         this.AdicionaProduto();
                         break;
                     case 2:
@@ -179,6 +181,7 @@ namespace FAKE_ENTERPRISE_LTDA
                         var novoPreco = entradaDados.LeDouble("Digite o novo valor do produto: ");
                         estoque.AtualizaValor(codigo, novoPreco);
                     }
+                    Console.WriteLine($"A quantidade de itens é {estoque.RetornaQuantidade(codigo)} produtos");
                     var mudanca = entradaDados.LeInteiro("Digite 1 para adicionar mais produtos, 2 para remover produtos ou 3 para não alterar a quantidade");
                     if (mudanca == 1)
                     {
