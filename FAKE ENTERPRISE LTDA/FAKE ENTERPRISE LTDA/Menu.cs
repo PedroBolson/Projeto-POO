@@ -191,7 +191,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 else if (produto != null && codigo != 0)
                 {
                     var quantidade = entradaDados.LeInteiro("Digite a quantidade de produtos");
-                    var valor = entradaDados.LeFloat("Digite o preço unitário do produto");
+                    var valor = entradaDados.LeFloat("Digite o preço unitário do produto (utilizando virgula para centavos como por exemplo: 100,50)");
                     var item = new ItemEstoque(produto, quantidade, valor);
                     estoque.Insere(item);
                     Console.WriteLine("Produto cadastrado com sucesso!");
