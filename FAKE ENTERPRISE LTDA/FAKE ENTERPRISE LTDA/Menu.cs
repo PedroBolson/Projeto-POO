@@ -163,7 +163,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         private void CadastroEstoque()
         {
-            int codigo;
+            int codigo, novaQtd = 0;
             do
             {
                 this.EscreveProdutos();
@@ -179,8 +179,18 @@ namespace FAKE_ENTERPRISE_LTDA
                         var novoPreco = entradaDados.LeDouble("Digite o novo valor do produto: ");
                         estoque.AtualizaValor(codigo, novoPreco);
                     }
-                    var novaQtd = entradaDados.LeInteiro("Digite quantos produtos gostaria de adicionar a mais");
-                    estoque.AumentaEstoque(codigo, novaQtd);
+                    var mudanca = entradaDados.LeInteiro("Digite 1 para adicionar mais produtos, 2 para remover produtos ou 3 para não alterar a quantidade");
+                    if (mudanca == 1)
+                    {
+                        novaQtd = entradaDados.LeInteiro("Digite quantos produtos gostaria de adicionar");
+                        estoque.AumentaEstoque(codigo, novaQtd);
+                    }
+                    else if (mudanca == 2)
+                    {
+                        novaQtd = entradaDados.LeInteiro("Digite quantos produtos gostaria de remover");
+                        estoque.AtualizaEstoque(codigo, novaQtd);
+
+                    }
                     Console.WriteLine("______");
                     Console.WriteLine("Produtos em estoque:");
                     estoque.EscreveEstoque();
