@@ -32,6 +32,22 @@ namespace FAKE_ENTERPRISE_LTDA
             perecivel = new Perecivel(3002, "Ovos", "Naturovos", date, true, "Ovo");
             this.Insere(perecivel);
         }
+
+        public bool ConfereDigital(int codigo)
+        {
+            foreach(Produto produto in produtos)
+            {
+                if(produto.Codigo == codigo)
+                {
+                    if(produto is Digital)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public bool ConfereCodigo(int codigo)
         {
             foreach (Produto produto in produtos)

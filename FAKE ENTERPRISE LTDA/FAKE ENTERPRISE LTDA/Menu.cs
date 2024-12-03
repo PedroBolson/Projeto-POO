@@ -165,7 +165,7 @@ namespace FAKE_ENTERPRISE_LTDA
 
         private void CadastroEstoque()
         {
-            int codigo, novaQtd = 0;
+            int codigo, quantidade, novaQtd = 0;
             do
             {
                 this.EscreveProdutos();
@@ -203,7 +203,14 @@ namespace FAKE_ENTERPRISE_LTDA
                 }
                 else if (produto != null && codigo != 0)
                 {
-                    var quantidade = entradaDados.LeInteiro("Digite a quantidade de produtos");
+                    if (cadProdutos.ConfereDigital(codigo))
+                    {
+                        quantidade = 0;
+                    }
+                    else
+                    {
+                        quantidade = entradaDados.LeInteiro("Digite a quantidade de produtos");
+                    }
                     var valor = entradaDados.LeFloat("Digite o preço unitário do produto (utilizando virgula para centavos como por exemplo: 100,50)");
                     var item = new ItemEstoque(produto, quantidade, valor);
                     estoque.Insere(item);
@@ -304,19 +311,30 @@ namespace FAKE_ENTERPRISE_LTDA
                     codigo2 = entradaDados.LeInteiro("Informe o código do produto vendido ou digite 0 para finalizar a venda!");
                     if (estoque.VerificaEstoque(codigo2))
                     {
-                        var quantidade1 = entradaDados.LeInteiro("Digite a quantidade de itens");
-                        if (estoque.VerificaEstoque(codigo2, quantidade1))
+                        if (cadProdutos.ConfereDigital(codigo2))
                         {
-                            Console.WriteLine("Quantidade de itens disponível em estoque!");
+                            var quantidade1 = entradaDados.LeInteiro("Digite a quantidade de itens");
                             totalParcial = estoque.RetornaValorUnitario(codigo2);
                             var item = new ItemVenda(estoque.GetItemPorCodigo(codigo2), quantidade1, totalParcial * quantidade1);
-                            estoque.AtualizaEstoque(codigo2, quantidade1);
                             vendas.Add(item);
                             Console.WriteLine("Produto(s) adicionado a venda com sucesso!");
                         }
                         else
                         {
-                            Console.WriteLine("Quantidade insuficiente em estoque");
+                            var quantidade1 = entradaDados.LeInteiro("Digite a quantidade de itens");
+                            if (estoque.VerificaEstoque(codigo2, quantidade1))
+                            {
+                                Console.WriteLine("Quantidade de itens disponível em estoque!");
+                                totalParcial = estoque.RetornaValorUnitario(codigo2);
+                                var item = new ItemVenda(estoque.GetItemPorCodigo(codigo2), quantidade1, totalParcial * quantidade1);
+                                estoque.AtualizaEstoque(codigo2, quantidade1);
+                                vendas.Add(item);
+                                Console.WriteLine("Produto(s) adicionado a venda com sucesso!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Quantidade insuficiente em estoque");
+                            }
                         }
                     }
                     else if (codigo2 != 0)
