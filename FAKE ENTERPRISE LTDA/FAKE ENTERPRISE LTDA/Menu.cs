@@ -178,7 +178,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     var control = entradaDados.LeString("Deseja alterar o valor unitário do produto? (Sim) (Nao)", "Sim", "Nao");
                     if (control == "Sim" || control == "sim")
                     {
-                        var novoPreco = entradaDados.LeDouble("Digite o novo valor do produto: ");
+                        var novoPreco = entradaDados.LeDouble("Digite o novo valor do produto(utilizando virgula para centavos como por exemplo: 100,50): ");
                         estoque.AtualizaValor(codigo, novoPreco);
                     }
                     Console.WriteLine($"A quantidade de itens é {estoque.RetornaQuantidade(codigo)} produtos");
