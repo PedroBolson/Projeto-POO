@@ -182,7 +182,7 @@ namespace FAKE_ENTERPRISE_LTDA
                         estoque.AtualizaValor(codigo, novoPreco);
                     }
                     Console.WriteLine($"A quantidade de itens é {estoque.RetornaQuantidade(codigo)} produtos");
-                    var mudanca = entradaDados.LeInteiro("Digite 1 para adicionar mais produtos, 2 para remover produtos ou 3 para não alterar a quantidade");
+                    var mudanca = entradaDados.LeInteiro("Digite 1 para adicionar mais produtos, 2 para remover produtos ou 3 para não alterar a quantidade", 1, 3);
                     if (mudanca == 1)
                     {
                         novaQtd = entradaDados.LeInteiro("Digite quantos produtos gostaria de adicionar");
