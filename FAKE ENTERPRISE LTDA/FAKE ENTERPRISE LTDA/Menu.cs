@@ -108,33 +108,29 @@ namespace FAKE_ENTERPRISE_LTDA
                         Console.Clear();
                         this.EscreveProdutos();
                         this.AdicionaProduto();
-                        Console.WriteLine("Produto adicionado com sucesso!");
-                        Thread.Sleep(1200);
                         break;
                     case 2:
                         Console.Clear();
                         Console.WriteLine("Modo de alteração de dados de produto");
                         this.EscreveProdutos();
-                        codigo = entradaDados.LeInteiro("Digite o código do produto a ser alterado(ou digite 0 para retornar)");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto a ser alterado(ou digite 0 para retornar ao menu anterior)");
                         if (codigo == 0)
                         {
                             break;
                         }
                         cadProdutos.MudancaParametros(codigo);
-                        Console.WriteLine("Produto alterado!");
-                        Thread.Sleep(1200);
+                        Thread.Sleep(1000);
                         break;
                     case 3:
                         Console.Clear();
                         Console.WriteLine("Modo de exclusão de produtos!");
                         this.EscreveProdutos();
-                        codigo = entradaDados.LeInteiro("Digite o código do produto a ser excluído(ou digite 0 para retornar)");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto a ser excluído(ou digite 0 para retornar ao menu anterior)");
                         if (codigo == 0)
                         {
                             break;
                         }
                         cadProdutos.ExcluiProduto(codigo);
-                        Console.WriteLine("Produto excluído!");
                         Thread.Sleep(1200);
                         break;
                 }
@@ -144,6 +140,7 @@ namespace FAKE_ENTERPRISE_LTDA
         private void AdicionaProduto()
         {
             var contagem = cadProdutos.GetTamanho();
+            int option;
             if (contagem > 100)
             {
                 Console.WriteLine("Limite de produtos atingido!");
@@ -154,9 +151,13 @@ namespace FAKE_ENTERPRISE_LTDA
                 Console.WriteLine("1 - Durável");
                 Console.WriteLine("2 - Digital");
                 Console.WriteLine("3 - Perecível");
-                int option = 0;
-                option = entradaDados.LeInteiro("Opção: ", 1, 3);
-                cadProdutos.CadastroPrduto(option);
+                Console.WriteLine("0 - Retornar ao menu anterior");
+                option = entradaDados.LeInteiro("Opção: ", 0, 3);
+                if (option != 0)
+                {
+                    cadProdutos.CadastroPrduto(option);
+                    Thread.Sleep(1000);
+                }
             }
         }
 

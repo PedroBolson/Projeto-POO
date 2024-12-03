@@ -56,19 +56,27 @@ namespace FAKE_ENTERPRISE_LTDA
 
         public void ExcluiProduto(int codigo)
         {
-            produtos.RemoveAll(p => p.Codigo == codigo);
+            if (ConfereCodigo(codigo))
+            {
+                Console.WriteLine("Produto não encontrado!");
+            }
+            else
+            {
+                produtos.RemoveAll(p => p.Codigo == codigo);
+                Console.WriteLine("Produto excluído!");
+            }
         }
 
         public void MudancaParametros(int codigo)
         {
-            int escolha, cod;
+            int escolha = 1, cod;
             bool verifica;
-            bool organico1 = false, manutencao1 = false;
+            bool organico1 = false, manutencao1 = false, produtoEncontrado = false;
             foreach (Produto produto in produtos)
             {
                 if (produto.Codigo == codigo)
                 {
-
+                    produtoEncontrado = true;
                     if (produto is Perecivel perecivel)
                     {
                         Console.Clear();
@@ -127,6 +135,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     }
                     else if (produto is Duravel duravel)
                     {
+                        Console.Clear();
                         duravel.ExibirDetalhes();
                         Console.WriteLine("O que desejaria mudar? Escolha uma opção");
                         Console.WriteLine("1 - Código");
@@ -181,6 +190,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     }
                     else if (produto is Digital digital)
                     {
+                        Console.Clear();
                         digital.ExibirDetalhes();
                         Console.WriteLine("O que desejaria mudar? Escolha uma opção");
                         Console.WriteLine("1 - Código");
@@ -229,11 +239,12 @@ namespace FAKE_ENTERPRISE_LTDA
                                 break;
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Produto não encontrado");
-                    }
+                    break;
                 }
+            }
+            if (!produtoEncontrado)
+            {
+                Console.WriteLine("Produto não encontrado");
             }
         }
         public void Insere(Produto prod)
@@ -303,7 +314,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     bool manutencao1 = false;
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu anterior): ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu de alterações de produtos): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
@@ -330,7 +341,7 @@ namespace FAKE_ENTERPRISE_LTDA
                 case 2:
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu anterior): ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu de alterações de produtos): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
@@ -354,7 +365,7 @@ namespace FAKE_ENTERPRISE_LTDA
                     bool organico1 = false;
                     do
                     {
-                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu anterior): ");
+                        codigo = entradaDados.LeInteiro("Digite o código do produto(digite 0 para cancelar e voltar ao menu de alterações de produtos): ");
                         verifica = this.ConfereCodigo(codigo);
                         if (!verifica)
                         {
